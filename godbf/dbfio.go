@@ -54,6 +54,8 @@ func createDbfTable(s []byte, fileEncoding string) (table *DbfTable, err error) 
 		switch s[offset+11] {
 		case 'C':
 			err = dt.AddTextField(fieldName, s[offset+16])
+		case 'M':
+			err = dt.AddMemoField(fieldName)
 		case 'N':
 			err = dt.AddNumberField(fieldName, s[offset+16], s[offset+17])
 		case 'F':

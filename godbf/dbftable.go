@@ -134,6 +134,10 @@ func (dt *DbfTable) AddDateField(fieldName string) (err error) {
 	return dt.addField(fieldName, Date, Date.fixedFieldLength(), Date.decimalCountNotApplicable())
 }
 
+func (dt *DbfTable) AddMemoField(fieldName string) (err error) {
+	return dt.addField(fieldName, Memo, Memo.fixedFieldLength(), Memo.decimalCountNotApplicable())
+}
+
 func (dt *DbfTable) AddTextField(fieldName string, length byte) (err error) {
 	return dt.addField(fieldName, Character, length, Character.decimalCountNotApplicable())
 }
