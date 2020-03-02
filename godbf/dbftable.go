@@ -338,6 +338,12 @@ func (dt *DbfTable) AddNewRecord() (newRecordNumber int) {
 	// and then increment number of records in dbase table
 	newRecordNumber = int(dt.numberOfRecords)
 
+	offset := int(dt.numberOfBytesInHeader)
+	lengthOfRecord := int(dt.lengthOfEachRecord)
+
+	offset = offset + (newRecordNumber * lengthOfRecord)
+	dt.fillFieldWithBlanks(lengthOfRecord, offset, 0)
+
 	//fmt.Printf("Number of rows before:%d\n", dt.numberOfRecords)
 	dt.numberOfRecords++
 	s := uint32ToBytes(dt.numberOfRecords)
