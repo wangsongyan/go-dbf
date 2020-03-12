@@ -8,7 +8,8 @@ import (
 )
 
 func NewFromFile(fileName string, fileEncoding string) (table *DbfTable, err error) {
-	if s, err := readFile(fileName); err == nil {
+	s, err := readFile(fileName)
+	if err == nil {
 		return createDbfTable(s, fileEncoding)
 	}
 	return
